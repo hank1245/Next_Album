@@ -23,8 +23,8 @@ const Navbar = () => {
   return (
     <Container>
       <Links>
+        <Link href="/upload"> Upload</Link>
         <Link href="/"> Home</Link>
-        <Link href="/albums/upload"> Upload</Link>
         <Link href="/albums"> See Albums</Link>
       </Links>
     </Container>

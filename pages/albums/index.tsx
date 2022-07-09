@@ -1,8 +1,11 @@
 import Axios from "axios"
 import Post from "../../components/Post"
 import tw from "tailwind-styled-components/dist/tailwind"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Pagination from "../../components/Pagination"
+import { createAlbum } from "../../features/AlbumSlice"
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from "../../app/store"
 
 export interface IAlbum {
     userId: number
@@ -25,6 +28,11 @@ min-h-screen
 
 
 const Album = ({ albumData }:IProps) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(createAlbum(albumData))
+  },[])
+
   const [page, setPage] = useState<number>(1)
   const limit = 5
   const MaxPage = albumData.length / limit
@@ -39,11 +47,7 @@ const Album = ({ albumData }:IProps) => {
   return (
     <>
     <CardSection>
-      {currentPageData.map((album) => {
-        return (
-          <Post data={album} key={album.id}/>
-        )
-      })}
+      {currentPageData.map((data) => <Post data={data} key={data.id}/>)}
     </CardSection>
     <Pagination current={page} onChange={handlePageChange} hasNext={page < MaxPage}/>
   </>
