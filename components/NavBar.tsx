@@ -1,5 +1,5 @@
-import Link from "next/link";
-import tw from "tailwind-styled-components";
+import Link from "next/link"
+import tw from "tailwind-styled-components"
 
 const Container = tw.div`
 w-full

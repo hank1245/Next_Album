@@ -1,5 +1,6 @@
 import Axios from "axios"
 import Post from "../../components/Post"
+import tw from "tailwind-styled-components/dist/tailwind"
 
 export interface IAlbum {
     userId: number
@@ -11,15 +12,24 @@ interface IProps {
     albumData: IAlbum[]
 }
 
+const CardSection = tw.section`
+mt-8
+grid
+grid-cols-3
+gap-8
+justify-items-center
+`
+
+
 const Album = ({ albumData }:IProps) => {
   return (
-    <div>
+    <CardSection>
       {albumData.map((album) => {
         return (
           <Post data={album} key={album.id}/>
         )
       })}
-    </div>
+    </CardSection>
   )
 }
 
