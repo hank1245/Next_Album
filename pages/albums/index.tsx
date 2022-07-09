@@ -16,7 +16,7 @@ const Album = ({ albumData }:IProps) => {
     <div>
       {albumData.map((album) => {
         return (
-          <Post data={album}/>
+          <Post data={album} key={album.id}/>
         )
       })}
     </div>

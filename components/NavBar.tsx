@@ -1,15 +1,34 @@
 import Link from "next/link";
-import styles from "../styles/Navbar.module.css";
+import tw from "tailwind-styled-components";
+
+const Container = tw.div`
+w-full
+h-[80px]
+bg-primary
+flex
+justify-center
+`
+
+const Links = tw.div`
+flex
+w-full
+h-full
+justify-around
+items-center
+text-xl
+text-white
+
+`
 
 const Navbar = () => {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.links}>
+    <Container>
+      <Links>
         <Link href="/"> Home</Link>
         <Link href="/albums/upload"> Upload</Link>
         <Link href="/albums"> See Albums</Link>
-      </div>
-    </div>
+      </Links>
+    </Container>
   );
 };
 

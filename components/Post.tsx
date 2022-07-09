@@ -7,7 +7,7 @@ interface Props {
 
 const Post = ({data}:Props) => {
   return (
-    <div key={data.id}>
+    <div>
         <h1> {data.userId}</h1>
         <p>{data.id}</p>
         <p> {data.title}</p>
