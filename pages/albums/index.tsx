@@ -1,6 +1,7 @@
-import Axios from "axios";
+import Axios from "axios"
+import Post from "../../components/Post"
 
-interface IAlbum {
+export interface IAlbum {
     userId: number
     id: number
     title: string
@@ -15,16 +16,12 @@ const Album = ({ albumData }:IProps) => {
     <div>
       {albumData.map((album) => {
         return (
-          <div key={album.id}>
-            <h1> {album.userId}</h1>
-            <p>{album.id}</p>
-            <p> {album.title}</p>
-          </div>
-        );
+          <Post data={album}/>
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
 export const getStaticProps = async () => {
   const response = await Axios.get(
