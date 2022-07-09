@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
-    <div className="container">
-      Make your own Album
+    <div className="flex justify-center items-center min-h-[90vh]">
+      <span className="text-[3rem] text-center">Make your own <br/>Album</span>
     </div>
   )
 }

@@ -16,11 +16,10 @@ h-full
 justify-around
 items-center
 text-xl
-text-white
-
+text-black
 `
 
-const Navbar = () => {
+const Navbar = () => { 
   return (
     <Container>
       <Links>

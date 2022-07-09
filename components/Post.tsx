@@ -19,7 +19,7 @@ const Post = ({data}:Props) => {
     <div className="card-body">
         <h2 className="card-title">{data.title}</h2>
         <div className="card-actions justify-end">
-            <button className="btn btn-primary">Modify</button>
+            <button className="btn btn-secondary">Modify</button>
         </div>
     </div>
     </div>
