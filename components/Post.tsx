@@ -10,9 +10,12 @@ interface Props {
 
 const Container = tw.div`
 card 
-w-96 
+w-72
+lg:w-96 
+max-h-[500px]
 bg-base-100 
 shadow-xl
+
 `
 
 const Post = ({data}:Props) => {
