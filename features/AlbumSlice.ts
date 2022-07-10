@@ -9,6 +9,7 @@ interface InitialState {
 
 const initialState:InitialState = {
     album: []
+    //초깃값으로 넣고 concat은 빼자!! push로 하는게 낫다
 }
 
 export const albumSlice = createSlice({
@@ -16,14 +17,23 @@ export const albumSlice = createSlice({
     initialState,
     reducers: {
         createAlbum: (state,action:PayloadAction<IAlbum[]>) => {
-            state.album = action.payload
+            state.album = state.album.concat(action.payload)
         },
-        deleteAlbum: (state,action:PayloadAction) => {
-
-        } 
+        deleteAlbum: (state,action:PayloadAction<IAlbum>) => {
+            state.album = state.album.filter(
+                (album) => album.id !== action.payload.id
+              );
+        },
+        updateAlbum: (state,action:PayloadAction<IAlbum>) => {
+            state.album.map((album) => {
+                if (album.id === action.payload.id) {
+                  album.title = action.payload.title;
+                }
+              });
+        }
     }
 })
 
-export const {createAlbum, deleteAlbum} = albumSlice.actions
+export const {createAlbum, deleteAlbum, updateAlbum} = albumSlice.actions
 
 export default albumSlice.reducer

@@ -2,6 +2,7 @@ import React,{ChangeEvent, useState} from 'react'
 import {IAlbum} from '../pages/albums/index'
 import tw from "tailwind-styled-components"
 import { useDispatch } from 'react-redux'
+import {updateAlbum} from '../features/AlbumSlice'
 
 interface Props {
   data: IAlbum
@@ -23,6 +24,11 @@ const Post = ({data}:Props) => {
     setIsModifying(true)
   }
   const saveTitle = () => {
+    dispatch(updateAlbum({
+      userId: data.userId,
+      id: data.id,
+      title: title
+    }))
     setIsModifying(false)
   }
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
