@@ -57,7 +57,7 @@ const Album = ({ albumData }:IProps) => {
 
 export const getStaticProps = async () => {
   const response = await Axios.get(
-    `https://jsonplaceholder.typicode.com/albums`
+    `https://jsonplaceholder.typicode.com/albums?_end=50`
   )
 
   return {

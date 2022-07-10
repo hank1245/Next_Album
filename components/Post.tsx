@@ -2,7 +2,7 @@ import React,{ChangeEvent, useState} from 'react'
 import {IAlbum} from '../pages/albums/index'
 import tw from "tailwind-styled-components"
 import { useDispatch } from 'react-redux'
-import {updateAlbum} from '../features/AlbumSlice'
+import {deleteAlbum, updateAlbum} from '../features/AlbumSlice'
 
 interface Props {
   data: IAlbum
@@ -35,6 +35,10 @@ const Post = ({data}:Props) => {
     setTitle(e.target.value)
   }
 
+  const deletePost = () => {
+    dispatch(deleteAlbum(data.id))
+  }
+
   return (
     <Container>
       <figure>
@@ -44,6 +48,7 @@ const Post = ({data}:Props) => {
           {isModifying ? <textarea className="textarea textarea-primary bg-transparent" value={title} onChange={e =>onChange(e)}></textarea>
           : <h2 className="card-title">{title}</h2>}
           <div className="card-actions justify-end">
+            <button className='btn' onClick={deletePost}>Delete</button>
               {isModifying ? <button className="btn btn-secondary" onClick={saveTitle}>Save</button>
               : <button className="btn btn-secondary" onClick={modifyTitle}>Modify</button>}
           </div>

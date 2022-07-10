@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../app/store'
 import {IAlbum} from '../pages/albums'
+import {getStaticProps} from '../pages/albums'
 
 interface InitialState {
     album:IAlbum[]
@@ -19,9 +20,9 @@ export const albumSlice = createSlice({
         createAlbum: (state,action:PayloadAction<IAlbum[]>) => {
             state.album = state.album.concat(action.payload)
         },
-        deleteAlbum: (state,action:PayloadAction<IAlbum>) => {
+        deleteAlbum: (state,action:PayloadAction<number>) => {
             state.album = state.album.filter(
-                (album) => album.id !== action.payload.id
+                (album) => album.id !== action.payload
               );
         },
         updateAlbum: (state,action:PayloadAction<IAlbum>) => {
