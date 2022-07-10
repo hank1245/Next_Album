@@ -36,8 +36,10 @@ export const albumSlice = createSlice({
               })
         },
         searchAlbums: (state,action:PayloadAction<string>) => {
-            state.album = state.album.filter(
-                (album) => album.title.includes(action.payload)
+            const albumData = JSON.parse(localStorage.getItem('album-data') || "")
+            console.log(albumData)
+            state.album = albumData.filter(
+                (album: IAlbum) => album.title.includes(action.payload)
               )
               console.log(state.album, action.payload)
         }

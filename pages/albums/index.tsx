@@ -42,6 +42,7 @@ const Album = ({ albumData }:IProps) => {
   useEffect(() => {
     dispatch(reset())
     dispatch(createAlbum(albumData))
+    localStorage.setItem("album-data",JSON.stringify(albumData))
   },[])
 
 
