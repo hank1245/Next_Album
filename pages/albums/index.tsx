@@ -37,6 +37,7 @@ items-center
 
 const Album = ({ albumData }:IProps) => {
   const {album} = useSelector((state:RootState) => state.albums)
+  
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(reset())
@@ -47,8 +48,13 @@ const Album = ({ albumData }:IProps) => {
   const [page, setPage] = useState<number>(1)
   const [title, setTitle] = useState("")
   const [searchInput, setSearchInput] = useState<string>("")
+
+  useEffect(() => { 
+    setCurrentPageData(album.slice(0,limit))
+   }, [album,searchInput]);
+  
   const limit = 5
-  const MaxPage = album.length / limit
+  const MaxPage = Math.ceil(album.length / limit)
   const [currentPageData, setCurrentPageData] = useState<IAlbum[]>(album.slice(0,limit))
 
   const handlePageChange = (count:number) => {
@@ -68,11 +74,13 @@ const Album = ({ albumData }:IProps) => {
         userId: Math.floor(Math.random()*100),
         id:  Math.floor(Math.random()*1000)
     }]))
+    setPage(1)
+    setTitle("")
   }
 
   const updateSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value)
-    dispatch(searchAlbums(searchInput))
+    dispatch(searchAlbums(e.target.value))
   }
 
   return (

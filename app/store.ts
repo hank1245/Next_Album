@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import AlbumSlice from "../features/AlbumSlice"
-import { createWrapper } from "next-redux-wrapper"
+import { createWrapper,HYDRATE } from "next-redux-wrapper"
+import reducer from './module'
 
 const store = configureStore({
     reducer: {

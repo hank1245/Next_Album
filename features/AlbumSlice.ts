@@ -39,6 +39,7 @@ export const albumSlice = createSlice({
             state.album = state.album.filter(
                 (album) => album.title.includes(action.payload)
               )
+              console.log(state.album, action.payload)
         }
     }
 })
